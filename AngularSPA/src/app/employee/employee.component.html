@@ -1,0 +1,56 @@
+<div class="container">
+    <div style="margin:100px;">
+        
+        <h1 style="text-align:center">CRUD Example</h1>
+        <br/>
+        <div class="row">
+            <div class="col-md-5">
+                <form [formGroup]= "employeeForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="employeeName">Name</label>
+                        <input type="text" id="employeeName" class="form-control" formControlName="name" placeholder="Enter Name here">
+                    </div>
+                    <div class="form-group">
+                        <label for="employeeEmail">Email</label>
+                        <input type="text" id="employeeEmail" class="form-control" formControlName="email" placeholder="Enter Email here" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">We will never share your email with any one else</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeePassword">Password</label>
+                        <input type="text" id="employeePassword" class="form-control" formControlName="password" placeholder="Enter Password here">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">{{btnSave}}</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-5">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let employee of employeeList; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{employee.name}}</td>
+                            <td>{{employee.email}}</td>
+                            <td>{{employee.password}}</td>
+                            <td><button class="btn btn-sm btn-warning"(click)="edit(employee.id)">Edit</button></td>
+                            <td><button class="btn btn-sm btn-danger"(click)="delete(employee.id)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
